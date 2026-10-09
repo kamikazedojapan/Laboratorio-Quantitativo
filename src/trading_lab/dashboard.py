@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 import pandas as pd
 import plotly.express as px
@@ -11,17 +12,38 @@ from .presentation import style_summary, load_record_chart, record_figure
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def public_demo_enabled():
+    return os.environ.get("LAB_PUBLIC_DEMO") == "1"
+
+
+def is_synthetic_record(manifest_path):
+    """Public history requires an explicit declaration; fail closed on bad records."""
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    if not isinstance(manifest, dict):
+        return False
+    config = manifest.get("config")
+    return isinstance(config, dict) and config.get("data_kind") == "synthetic"
+
+
 def main():
+    public_demo = public_demo_enabled()
     st.set_page_config(page_title="Laboratório de Trading", page_icon="🧪", layout="wide")
     st.title("Laboratório de Trading com ChatGPT")
     st.caption("Pesquisa local • Indicadores determinísticos • Sem envio de ordens")
     st.warning("Comparação exploratória. Evidência insuficiente para eficácia no mercado.")
-    mode = st.sidebar.radio("Fonte de dados", ["Demonstração sintética", "Importar CSV/Parquet"])
-    config_upload = st.sidebar.file_uploader("Configuração JSON (obrigatória na importação)", type=["json"])
-    data_upload = st.sidebar.file_uploader("Barras OHLCV", type=["csv", "parquet"])
+    if public_demo:
+        st.caption("Versão pública do Laboratório Quantitativo • Resultados exclusivamente com dados sintéticos.")
+        mode = "Demonstração sintética"
+    else:
+        mode = st.sidebar.radio("Fonte de dados", ["Demonstração sintética", "Importar CSV/Parquet"])
+        config_upload = st.sidebar.file_uploader("Configuração JSON (obrigatória na importação)", type=["json"])
+        data_upload = st.sidebar.file_uploader("Barras OHLCV", type=["csv", "parquet"])
     try:
         if mode == "Demonstração sintética":
-            sessions = st.sidebar.number_input("Número de sessões sintéticas", min_value=3, value=60, step=1)
+            sessions = st.sidebar.number_input("Número de sessões sintéticas", min_value=3, value=60, step=1, **({"max_value": 260} if public_demo else {}))
             c = synthetic_config(load_config(ROOT / "configs/demo.json"), sessions)
             d = synthetic(c)
             st.info("DEMONSTRAÇÃO SINTÉTICA — ativo, preços, calendário e sessão artificiais.")
@@ -64,6 +86,8 @@ def main():
         except ValueError as e:
             st.error(str(e))
     folders = sorted((ROOT / "runs").glob("*/manifest.json"), reverse=True)
+    if public_demo:
+        folders = [p for p in folders if is_synthetic_record(p)]
     if folders:
         st.subheader("Histórico das execuções")
         selected = st.selectbox("Registro salvo — filtros abaixo não recalculam a pesquisa", [str(p.parent) for p in folders])

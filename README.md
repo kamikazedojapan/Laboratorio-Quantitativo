@@ -40,6 +40,47 @@ A compatibilidade das versões fixadas deve ser conferida no ambiente de destino
 
 Abra o endereço local informado pelo Streamlit.
 
+## Versão pública no Streamlit Community Cloud
+
+O modo público é controlado exclusivamente pela variável de ambiente `LAB_PUBLIC_DEMO`.
+O valor exato `LAB_PUBLIC_DEMO="1"` habilita a versão pública sintética. A variável ausente
+ou com qualquer outro valor mantém o comportamento local, incluindo importação, uploaders
+e histórico completo. Não há controle na interface para mudar esse modo.
+
+Na versão pública, não são aceitos uploads de configuração ou dados nem importações.
+As sessões sintéticas variam de **3 a 260**, com valor inicial **60**. Indicadores,
+gráficos, métricas, execução, comparação e download do resumo continuam disponíveis.
+O histórico público mostra somente manifestos com `config.data_kind == "synthetic"`;
+execuções importadas, outros tipos e manifestos inválidos ou sem essa declaração ficam
+ocultos. Nenhum registro existente é alterado ou apagado.
+
+Para publicar, selecione `app.py` como arquivo principal e Python 3.11 ou superior.
+O `requirements.txt` instala o projeto e suas dependências. Em **Advanced settings →
+Secrets** (ou **Settings → Secrets** para uma aplicação existente), adicione na raiz
+do TOML, fora de qualquer seção:
+
+```toml
+LAB_PUBLIC_DEMO = "1"
+```
+
+Salve e reinicie a aplicação para conferir o modo público. Use a string `"1"`, incluindo
+as aspas. O Streamlit disponibiliza Secrets da raiz como variáveis de ambiente; o dashboard
+consulta somente o ambiente, sem fallback para `st.secrets`.
+Veja a [documentação de Secrets do Community Cloud](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management)
+e a [exposição como variáveis de ambiente](https://docs.streamlit.io/develop/concepts/connections/secrets-management).
+
+Para testar esse modo no PowerShell:
+
+```powershell
+$env:LAB_PUBLIC_DEMO = "1"
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+As novas execuções continuam sendo gravadas em `runs/` no servidor e podem aparecer para
+outros visitantes; não há isolamento por visitante nem garantia de persistência após
+reinícios ou republicações. O filtro protege a interface, não o acesso aos arquivos de um
+repositório público. Publique somente arquivos que possam ser compartilhados.
+
 ## Demonstração sintética
 
 O dashboard inicia com **60 sessões**, ajustáveis na barra lateral, com mínimo de três.
@@ -101,6 +142,10 @@ Não publique dados de terceiros sem verificar as condições de uso e redistrib
 ```
 
 A implementação das 60 sessões foi acompanhada por um relato de 176 testes aprovados e reexecução de 13 testes afetados. Esses números descrevem aquela execução local; não substituem a execução dos testes na versão baixada.
+
+### Validação local de 09/10/2026
+
+No ambiente local com Python **3.13.14** da .venv, foram registrados **202 testes aprovados, 2 avisos, em 39,16 segundos**. Esse registro é separado dos relatos históricos acima e descreve aquela execução local.
 
 ## Organização
 
