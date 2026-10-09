@@ -1,0 +1,99 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Marcio\Documents\ChatGPT\Laboratório Quantitativo 🧪\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Marcio\Documents\ChatGPT\Laboratório Quantitativo 🧪
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 38 items
+
+tests/test_lab.py::test_manual_indicators PASSED                         [  2%]
+tests/test_lab.py::test_warmup_missing PASSED                            [  5%]
+tests/test_lab.py::test_reject_data[order] PASSED                        [  7%]
+tests/test_lab.py::test_reject_data[duplicate] PASSED                    [ 10%]
+tests/test_lab.py::test_reject_data[negative] PASSED                     [ 13%]
+tests/test_lab.py::test_reject_data[timezone] PASSED                     [ 15%]
+tests/test_lab.py::test_reject_data[gap] PASSED                          [ 18%]
+tests/test_lab.py::test_reject_data[ohlc] PASSED                         [ 21%]
+tests/test_lab.py::test_reject_data[session] PASSED                      [ 23%]
+tests/test_lab.py::test_reject_data[volume] PASSED                       [ 26%]
+tests/test_lab.py::test_reject_data[daily] PASSED                        [ 28%]
+tests/test_lab.py::test_roundtrip PASSED                                 [ 31%]
+tests/test_lab.py::test_accounting_next_open_costs PASSED                [ 34%]
+tests/test_lab.py::test_session_and_affordability PASSED                 [ 36%]
+tests/test_lab.py::test_no_lookahead[ema] PASSED                         [ 39%]
+tests/test_lab.py::test_no_lookahead[rsi] PASSED                         [ 42%]
+tests/test_lab.py::test_no_lookahead[session_hold] PASSED                [ 44%]
+tests/test_lab.py::test_research PASSED                                  [ 47%]
+2026-10-06 21:22:29.411 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+tests/test_lab.py::test_dashboard PASSED                                 [ 50%]
+tests/test_lab.py::test_crossing_rules PASSED                            [ 52%]
+tests/test_lab.py::test_no_overnight_signal_and_forced_exit PASSED       [ 55%]
+tests/test_lab.py::test_metrics_known PASSED                             [ 57%]
+tests/test_lab.py::test_reject_ambiguous_clock PASSED                    [ 60%]
+tests/test_review_regressions.py::test_cash_complete_and_numeric_roundtrip PASSED [ 63%]
+tests/test_review_regressions.py::test_style_preserves_numbers_and_formats_only_display PASSED [ 65%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-desenvolvimento] PASSED [ 68%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-validacao] PASSED [ 71%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-teste_final] PASSED [ 73%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-desenvolvimento] PASSED [ 76%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-validacao] PASSED [ 78%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-teste_final] PASSED [ 81%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-desenvolvimento] PASSED [ 84%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-validacao] PASSED [ 86%]
+tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-teste_final] PASSED [ 89%]
+tests/test_review_regressions.py::test_saved_values_are_not_recomputed_and_legacy_supported PASSED [ 92%]
+tests/test_review_regressions.py::test_record_rejects_misaligned_timestamp PASSED [ 94%]
+tests/test_review_regressions.py::test_record_no_orders PASSED           [ 97%]
+2026-10-06 21:22:32.962 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+tests/test_review_regressions.py::test_dashboard_record_independent_of_current_data_and_no_arrow_warning PASSED [100%]
+
+=================================== PASSES ====================================
+_______________________________ test_dashboard ________________________________
+---------------------------- Captured stderr call -----------------------------
+2026-10-06 21:22:29.411 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+___ test_dashboard_record_independent_of_current_data_and_no_arrow_warning ____
+---------------------------- Captured stderr call -----------------------------
+2026-10-06 21:22:32.962 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+------------------------------ Captured log call ------------------------------
+WARNING  streamlit.runtime.scriptrunner_utils.script_run_context:script_run_context.py:483 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+=========================== short test summary info ===========================
+PASSED tests/test_lab.py::test_manual_indicators
+PASSED tests/test_lab.py::test_warmup_missing
+PASSED tests/test_lab.py::test_reject_data[order]
+PASSED tests/test_lab.py::test_reject_data[duplicate]
+PASSED tests/test_lab.py::test_reject_data[negative]
+PASSED tests/test_lab.py::test_reject_data[timezone]
+PASSED tests/test_lab.py::test_reject_data[gap]
+PASSED tests/test_lab.py::test_reject_data[ohlc]
+PASSED tests/test_lab.py::test_reject_data[session]
+PASSED tests/test_lab.py::test_reject_data[volume]
+PASSED tests/test_lab.py::test_reject_data[daily]
+PASSED tests/test_lab.py::test_roundtrip
+PASSED tests/test_lab.py::test_accounting_next_open_costs
+PASSED tests/test_lab.py::test_session_and_affordability
+PASSED tests/test_lab.py::test_no_lookahead[ema]
+PASSED tests/test_lab.py::test_no_lookahead[rsi]
+PASSED tests/test_lab.py::test_no_lookahead[session_hold]
+PASSED tests/test_lab.py::test_research
+PASSED tests/test_lab.py::test_dashboard
+PASSED tests/test_lab.py::test_crossing_rules
+PASSED tests/test_lab.py::test_no_overnight_signal_and_forced_exit
+PASSED tests/test_lab.py::test_metrics_known
+PASSED tests/test_lab.py::test_reject_ambiguous_clock
+PASSED tests/test_review_regressions.py::test_cash_complete_and_numeric_roundtrip
+PASSED tests/test_review_regressions.py::test_style_preserves_numbers_and_formats_only_display
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-desenvolvimento]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-validacao]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[ema-teste_final]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-desenvolvimento]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-validacao]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[rsi-teste_final]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-desenvolvimento]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-validacao]
+PASSED tests/test_review_regressions.py::test_record_prices_signals_and_fills[session_hold-teste_final]
+PASSED tests/test_review_regressions.py::test_saved_values_are_not_recomputed_and_legacy_supported
+PASSED tests/test_review_regressions.py::test_record_rejects_misaligned_timestamp
+PASSED tests/test_review_regressions.py::test_record_no_orders
+PASSED tests/test_review_regressions.py::test_dashboard_record_independent_of_current_data_and_no_arrow_warning
+============================= 38 passed in 6.98s ==============================

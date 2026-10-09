@@ -1,0 +1,14 @@
+runs\20261007T002250Z_66bfdcc1
+       particao   estrategia  retorno_liquido  operacoes_fechadas              evidencia
+desenvolvimento          ema         0.111245                   4 evidência insuficiente
+desenvolvimento          rsi         0.121267                   4 evidência insuficiente
+desenvolvimento session_hold         0.038327                   8 evidência insuficiente
+desenvolvimento        caixa         0.000000                   0 evidência insuficiente
+      validacao          ema         0.087836                   2 evidência insuficiente
+      validacao          rsi         0.057687                   2 evidência insuficiente
+      validacao session_hold        -0.024022                   4 evidência insuficiente
+      validacao        caixa         0.000000                   0 evidência insuficiente
+    teste_final          ema         0.047736                   1 evidência insuficiente
+    teste_final          rsi         0.031541                   1 evidência insuficiente
+    teste_final session_hold        -0.065249                   3 evidência insuficiente
+    teste_final        caixa         0.000000                   0 evidência insuficiente

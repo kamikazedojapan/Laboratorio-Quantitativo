@@ -1,0 +1,19 @@
+{
+  "data_kind": "synthetic",
+  "provenance": "Demonstração artificial criada localmente; não representa bolsa ou ativo real.",
+  "timezone": "America/Bahia",
+  "frequency_minutes": 5,
+  "session_start": "09:00",
+  "session_end": "12:00",
+  "liquidation_time": "11:50",
+  "session_provenance": "Janela e calendário artificiais de laboratório; não são horários oficiais da B3.",
+  "session_dates": ["2026-09-01", "2026-09-02", "2026-09-03", "2026-09-04", "2026-09-07", "2026-09-08", "2026-09-09", "2026-09-10", "2026-09-11", "2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-21"],
+  "split": {"development_end": "2026-09-10", "validation_end": "2026-09-16"},
+  "initial_cash": 10000.0,
+  "allocation": 0.95,
+  "lot_size": 1,
+  "fee_bps": 5.0,
+  "fixed_fee": 0.5,
+  "slippage_bps": 2.0,
+  "seed": 42
+}

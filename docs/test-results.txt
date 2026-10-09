@@ -1,0 +1,10 @@
+Data local (America/Bahia): 2026-10-06
+Comando: .\.venv\Scripts\python.exe -m pytest -q
+Saída capturada da execução final:
+.......................                                                  [100%]
+23 passed in 4.63s
+
+Servidor: http://127.0.0.1:8501
+GET /_stcore/health: StatusCode 200, Content ok
+Execução CLI final: runs/20261006T235127Z_5e766240
+CLI: exit_code 0

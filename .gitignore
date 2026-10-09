@@ -1,0 +1,30 @@
+# Configurações do ambiente de desenvolvimento
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+tmp/
+
+# Materiais locais fora da primeira publicação
+/audit/
+/dist/
+/estudos/
+/Conceitos e Fórmulas/
+
+# Configuracoes privadas
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Historicos locais; manter uma execução sintetica de referencia
+/runs/*
+!/runs/20261009T035723Z_37aafd9d
+
+# Relatorios locais; preservar a tabela utilizada pelo dashboard
+/reports/*
+!/reports/acompanhamento/
+/reports/acompanhamento/*
+!/reports/acompanhamento/20261007-retomada/
+/reports/acompanhamento/20261007-retomada/*
+!/reports/acompanhamento/20261007-retomada/method_coverage.csv
